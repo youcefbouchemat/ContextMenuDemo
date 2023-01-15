@@ -8,14 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var fourgroundColor: Color = Color.white;
+    @State private var backgroundColor: Color = Color.black;
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+        Text("Hello, world!")
+            .font(.largeTitle)
+            .foregroundColor(fourgroundColor)
+            .background(backgroundColor)
+            .contextMenu{
+                Button(action:{
+                    self.fourgroundColor = Color.white;
+                    self.backgroundColor = Color.black;
+                }){
+                    Text("Normal Colors")
+                    Image(systemName: "paintbrush")
+                }
+                Button(action: {
+                    self.fourgroundColor = Color.black;
+                    self.backgroundColor = Color.white;
+                }){
+                    Text("Inverted Colors")
+                    Image(systemName: "paintbrush.fill")
+                }
+            }
     }
 }
 
